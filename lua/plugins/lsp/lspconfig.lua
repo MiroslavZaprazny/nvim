@@ -50,6 +50,19 @@ lspconfig["emmet_ls"].setup({
 lspconfig["intelephense"].setup({
   capabilities = capabilities,
   on_attach = on_attach,
+  filetypes = { "php" }
+})
+
+lspconfig["volar"].setup({
+  capabilities = capabilities,
+  on_attach = on_attach,
+  filetypes = { "html", "js", "vue"}
+})
+
+lspconfig["quick_lint_js"].setup({
+  capabilities = capabilities,
+  on_attach = on_attach,
+  filetypes = { "html", "js", "vue"}
 })
 
 lspconfig["sumneko_lua"].setup({
