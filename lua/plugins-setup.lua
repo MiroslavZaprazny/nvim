@@ -29,16 +29,17 @@ return packer.startup(function(use)
 	use("wbthomason/packer.nvim")
 	use("nvim-lua/plenary.nvim")
 	--use("bluz71/vim-nightfly-guicolors") color scheme
-    use("EdenEast/nightfox.nvim")
+  --use("EdenEast/nightfox.nvim")
+  use("catppuccin/nvim")
 	--use("tpope/vim-surround")
 	--use("vim-scripts/ReplaceWithRegister")
 	use("numToStr/Comment.nvim")
 	use("nvim-tree/nvim-tree.lua")
-	use("kyazdani42/nvim-web-devicons")
 	use("nvim-lualine/lualine.nvim")
 	-- fuzzy finding w/ telescope
   use({ "nvim-telescope/telescope-fzf-native.nvim", run = "make" }) -- dependency for better sorting performance
   use({ "nvim-telescope/telescope.nvim", branch = "0.1.x" }) -- fuzzy finder
+  use ('nvim-tree/nvim-web-devicons')
 
   -- autocompletion
   use("hrsh7th/nvim-cmp") -- completion plugin

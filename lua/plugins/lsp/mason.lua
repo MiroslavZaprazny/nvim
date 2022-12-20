@@ -16,7 +16,7 @@ mason.setup()
 mason_lspconfig.setup({
   -- list of servers for mason to install
   ensure_installed = {
-	"intelephense",
+	  "intelephense",
     "html",
     "sumneko_lua",
     "emmet_ls",
