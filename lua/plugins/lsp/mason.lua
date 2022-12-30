@@ -22,5 +22,6 @@ mason_lspconfig.setup({
     "emmet_ls",
     "volar",
     "quick_lint_js",
+    "tsserver"
   },
 })
