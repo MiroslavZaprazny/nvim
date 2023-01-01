@@ -12,4 +12,5 @@ require("plugins.lsp.lspconfig")
 require("plugins.autopairs")
 require("plugins.treesitter")
 require("plugins.gitsigns")
+require("plugins.lsp.null-ls")
 
