@@ -1,10 +1,7 @@
-vim.cmd("colorscheme catppuccin")
---https://github.com/EdenEast/nightfox.nvim
-
-local status, _ = pcall(vim.cmd, "colorscheme catppuccin")
+vim.cmd("colorscheme candle-grey")
+local status, _ = pcall(vim.cmd, "colorscheme candle-grey")
 
 if not status then
 	print("Colorscheme not found")
 	return
 end
-
