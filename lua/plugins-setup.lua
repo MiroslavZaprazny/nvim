@@ -75,12 +75,12 @@ return packer.startup(function(use)
 	use("lewis6991/gitsigns.nvim")
 
 	-- colorschemes
-	-- use('kvrohit/rasmus.nvim')
+	use("kvrohit/rasmus.nvim")
 	-- use({
 	-- 	"rebelot/kanagawa.nvim",
 	-- })
 	-- use({ "ntk148v/komau.vim" })
-	use("jaredgorski/fogbell.vim")
+	-- use("jaredgorski/fogbell.vim")
 
 	if packer_bootstrap then
 		require("packer").sync()

@@ -1,5 +1,5 @@
-vim.cmd("colorscheme fogbell")
-local status, _ = pcall(vim.cmd, "colorscheme fogbell")
+vim.cmd("colorscheme rasmus")
+local status, _ = pcall(vim.cmd, "colorscheme rasmus")
 
 if not status then
 	print("Colorscheme not found")
