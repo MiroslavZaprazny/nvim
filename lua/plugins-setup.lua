@@ -80,7 +80,7 @@ return packer.startup(function(use)
 	-- 	"rebelot/kanagawa.nvim",
 	-- })
 	-- use({ "ntk148v/komau.vim" })
-	use("aditya-azad/candle-grey")
+	use("jaredgorski/fogbell.vim")
 
 	if packer_bootstrap then
 		require("packer").sync()
