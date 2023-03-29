@@ -34,11 +34,12 @@ return packer.startup(function(use)
 	use("numToStr/Comment.nvim")
 	use("nvim-tree/nvim-tree.lua")
 	use("nvim-lualine/lualine.nvim")
+	-- use("nvim-tree/nvim-web-devicons")
 	-- fuzzy finding w/ telescope
 	use({ "nvim-telescope/telescope-fzf-native.nvim", run = "make" }) -- dependency for better sorting performance
 	use({ "nvim-telescope/telescope.nvim", branch = "0.1.x" }) -- fuzzy finder
-	use("nvim-tree/nvim-web-devicons")
-
+	-- use ('nvim-tree/nvim-web-devicons')
+	use("kyazdani42/nvim-web-devicons")
 	-- autocompletion
 	use("hrsh7th/nvim-cmp") -- completion plugin
 	use("hrsh7th/cmp-buffer") -- source for text in buffer
@@ -54,7 +55,8 @@ return packer.startup(function(use)
 
 	use("neovim/nvim-lspconfig")
 	use("hrsh7th/cmp-nvim-lsp") -- for autocompletion
-	use({ "glepnir/lspsaga.nvim", branch = "main" }) -- enhanced lsp uis
+	-- use({ "glepnir/lspsaga.nvim", branch = "main" }) -- enhanced lsp uis
+	use({ "kkharji/lspsaga.nvim" }) -- nightly
 	use("onsails/lspkind.nvim")
 
 	use("jose-elias-alvarez/null-ls.nvim") -- configure formatters & linters
@@ -69,18 +71,15 @@ return packer.startup(function(use)
 	})
 
 	-- auto closing
-	use("windwp/nvim-autopairs") -- autoclose parens, brackets, quotes, etc...
-	use({ "windwp/nvim-ts-autotag", after = "nvim-treesitter" }) -- autoclose tags
+	-- use("windwp/nvim-autopairs") -- autoclose parens, brackets, quotes, etc...
+	-- use({ "windwp/nvim-ts-autotag", after = "nvim-treesitter" }) -- autoclose tags
 
 	use("lewis6991/gitsigns.nvim")
 
-	-- colorschemes
-	use("kvrohit/rasmus.nvim")
-	-- use({
-	-- 	"rebelot/kanagawa.nvim",
-	-- })
-	-- use({ "ntk148v/komau.vim" })
-	-- use("jaredgorski/fogbell.vim")
+	--colorschemes
+	-- use("morhetz/gruvbox")
+	use("tjdevries/colorbuddy.vim")
+	use("tjdevries/gruvbuddy.nvim")
 
 	if packer_bootstrap then
 		require("packer").sync()
