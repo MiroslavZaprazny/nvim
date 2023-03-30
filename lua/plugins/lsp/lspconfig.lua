@@ -21,7 +21,7 @@ local on_attach = function(client, bufnr)
 	keymap.set("n", "gf", vim.lsp.buf.signature_help) -- show definition, references
 	keymap.set("n", "gD", vim.lsp.buf.declaration) -- got to declaration
 	keymap.set("n", "gd", vim.lsp.buf.definition) -- see definition and make edits in window
-	keymap.set("n", "gi", vim.lsp.buf.implementation, opts) -- go to implementation
+	keymap.set("n", "gi", vim.lsp.buf.implementation) -- go to implementation
 	keymap.set("n", "<leader>ca", "<cmd>Lspsaga code_action<CR>", opts) -- see available code actions
 	keymap.set("n", "<leader>rn", "<cmd>Lspsaga rename<CR>", opts) -- smart rename
 	keymap.set("n", "<leader>D", "<cmd>Lspsaga show_line_diagnostics<CR>", opts) -- show  diagnostics for line
@@ -40,28 +40,11 @@ lspconfig["html"].setup({
 	on_attach = on_attach,
 })
 
--- configure emmet language server
-lspconfig["emmet_ls"].setup({
+lspconfig["phpactor"].setup({
+	-- cmd = { "phpactor", "language-server" },
+	-- filetypes = "php",
 	capabilities = capabilities,
 	on_attach = on_attach,
-	filetypes = { "html", "typescriptreact", "javascriptreact", "css", "sass", "scss", "less", "svelte" },
-})
-
-lspconfig["intelephense"].setup({
-	capabilities = capabilities,
-	on_attach = on_attach,
-})
-
-lspconfig["volar"].setup({
-	capabilities = capabilities,
-	on_attach = on_attach,
-	filetypes = { "html", "js", "vue" },
-})
-
-lspconfig["quick_lint_js"].setup({
-	capabilities = capabilities,
-	on_attach = on_attach,
-	filetypes = { "html", "js", "vue" },
 })
 
 lspconfig["tsserver"].setup({
