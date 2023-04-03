@@ -20,16 +20,16 @@ local on_attach = function(client, bufnr)
 	-- set keybinds
 	keymap.set("n", "gf", vim.lsp.buf.signature_help) -- show definition, references
 	keymap.set("n", "gD", vim.lsp.buf.declaration) -- got to declaration
+	keymap.set("n", "gR", vim.lsp.buf.references) -- see references
 	keymap.set("n", "gd", vim.lsp.buf.definition) -- see definition and make edits in window
 	keymap.set("n", "gi", vim.lsp.buf.implementation) -- go to implementation
+	keymap.set("n", "K", vim.lsp.buf.hover) -- show documentation for what is under cursor
 	keymap.set("n", "<leader>ca", "<cmd>Lspsaga code_action<CR>", opts) -- see available code actions
 	keymap.set("n", "<leader>rn", "<cmd>Lspsaga rename<CR>", opts) -- smart rename
 	keymap.set("n", "<leader>D", "<cmd>Lspsaga show_line_diagnostics<CR>", opts) -- show  diagnostics for line
 	keymap.set("n", "<leader>d", "<cmd>Lspsaga show_cursor_diagnostics<CR>", opts) -- show diagnostics for cursor
 	keymap.set("n", "[d", "<cmd>Lspsaga diagnostic_jump_prev<CR>", opts) -- jump to previous diagnostic in buffer
 	keymap.set("n", "]d", "<cmd>Lspsaga diagnostic_jump_next<CR>", opts) -- jump to next diagnostic in buffer
-	keymap.set("n", "K", vim.lsp.buf.hover) -- show documentation for what is under cursor
-	keymap.set("n", "<leader>o", "<cmd>LSoutlineToggle<CR>", opts) -- see outline on right hand side
 end
 
 local capabilities = cmp_nvim_lsp.default_capabilities()
