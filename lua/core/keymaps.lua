@@ -8,9 +8,12 @@ keymap.set("n", "<leader>to", ":tabnew<CR>")
 keymap.set("n", "<leader>tx", ":tabclose<CR>")
 keymap.set("n", "<leader>tn", ":tabn<CR>")
 keymap.set("n", "<leader>tp", ":tabp<CR>")
-keymap.set("n", "<C-b>", ":NvimTreeToggle<CR>")
+keymap.set("n", "<C-e>", ":NvimTreeToggle<CR>")
+keymap.set("n", "<C-f>", ":NvimTreeFindFile<CR>")
 keymap.set("n", "<C-k>", ":wincmd k<CR>")
 keymap.set("n", "<C-j>", ":wincmd j<CR>")
+keymap.set("n", "<C-l>", ":wincmd l<CR>")
+keymap.set("n", "<C-h>", ":wincmd h<CR>")
 keymap.set("n", "<leader>ff", "<cmd>Telescope find_files<cr>")
 keymap.set("n", "<leader>fs", "<cmd>Telescope live_grep<cr>") -- find string in current working directory as you type
 keymap.set("n", "<leader>fc", "<cmd>Telescope grep_string<cr>") -- find string under cursor in current working directory
