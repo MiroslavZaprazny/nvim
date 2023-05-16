@@ -75,6 +75,7 @@ return packer.startup(function(use)
 	-- use({ "windwp/nvim-ts-autotag", after = "nvim-treesitter" }) -- autoclose tags
 
 	use("lewis6991/gitsigns.nvim")
+	use("f-person/git-blame.nvim")
 
 	--colorschemes
 	-- use("morhetz/gruvbox")
