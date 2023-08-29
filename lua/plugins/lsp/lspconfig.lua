@@ -34,20 +34,9 @@ end
 
 local capabilities = cmp_nvim_lsp.default_capabilities()
 
--- configure html server
-lspconfig["html"].setup({
-	capabilities = capabilities,
-	on_attach = on_attach,
-})
-
 lspconfig["phpactor"].setup({
-	-- cmd = { "phpactor", "language-server" },
-	-- filetypes = "php",
-	capabilities = capabilities,
-	on_attach = on_attach,
-})
-
-lspconfig["tsserver"].setup({
+	cmd = { "phpactor", "language-server" },
+	filetypes = "php",
 	capabilities = capabilities,
 	on_attach = on_attach,
 })

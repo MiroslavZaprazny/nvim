@@ -20,3 +20,4 @@ keymap.set("n", "<leader>fc", "<cmd>Telescope grep_string<cr>") -- find string u
 keymap.set("n", "<leader>?", "<cmd>Telescope buffers<cr>") -- list open buffers in current neovim instance
 keymap.set("n", "<leader>fh", "<cmd>Telescope help_tags<cr>") -- list available help tags
 keymap.set("n", "<leader>g", "<cmd>:GitBlameToggle<cr>") -- Toggle git blame
+keymap.set("n", "<leader>te", "<cmd>:term<cr>") -- Toggle terminal
