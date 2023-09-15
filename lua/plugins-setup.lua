@@ -74,13 +74,25 @@ return packer.startup(function(use)
 	-- use("windwp/nvim-autopairs") -- autoclose parens, brackets, quotes, etc...
 	-- use({ "windwp/nvim-ts-autotag", after = "nvim-treesitter" }) -- autoclose tags
 
+    -- git
 	use("lewis6991/gitsigns.nvim")
 	use("f-person/git-blame.nvim")
+    use({
+        "kdheepak/lazygit.nvim",
+        -- optional for floating window border decoration
+        requires = {
+            "nvim-lua/plenary.nvim",
+        },
+    })
 
-	--colorschemes
+	-- colorschemes
 	-- use("morhetz/gruvbox")
 	use("tjdevries/colorbuddy.vim")
 	use("tjdevries/gruvbuddy.nvim")
+
+    -- database
+    use("tpope/vim-dadbod")
+    use("kristijanhusak/vim-dadbod-ui")
 
 	if packer_bootstrap then
 		require("packer").sync()
