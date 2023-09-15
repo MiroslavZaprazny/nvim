@@ -19,4 +19,6 @@ opt.clipboard:append("unnamedplus")
 opt.splitright = true
 opt.splitbelow = true
 opt.iskeyword:append("-, _")
-opt.guicursor="n-v-c-i:block"
+-- opt.guicursor="n-v-c-i:block"
+opt.list = true
+opt.listchars = "eol:↲,trail:-"
