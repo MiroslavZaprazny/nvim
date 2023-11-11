@@ -33,12 +33,11 @@ return packer.startup(function(use)
 	--use("vim-scripts/ReplaceWithRegister")
 	use("numToStr/Comment.nvim")
 	use("nvim-tree/nvim-tree.lua")
+
 	use("nvim-lualine/lualine.nvim")
-	-- use("nvim-tree/nvim-web-devicons")
 	-- fuzzy finding w/ telescope
 	use({ "nvim-telescope/telescope-fzf-native.nvim", run = "make" }) -- dependency for better sorting performance
 	use({ "nvim-telescope/telescope.nvim", branch = "0.1.x" }) -- fuzzy finder
-	-- use ('nvim-tree/nvim-web-devicons')
 	use("kyazdani42/nvim-web-devicons")
 	-- autocompletion
 	use("hrsh7th/nvim-cmp") -- completion plugin
@@ -90,9 +89,10 @@ return packer.startup(function(use)
 	use("tjdevries/colorbuddy.vim")
 	use("tjdevries/gruvbuddy.nvim")
 
-    -- database
-    use("tpope/vim-dadbod")
+    -- database use("tpope/vim-dadbod")
     use("kristijanhusak/vim-dadbod-ui")
+
+    use("christoomey/vim-tmux-navigator")
 
 	if packer_bootstrap then
 		require("packer").sync()
