@@ -88,6 +88,7 @@ return packer.startup(function(use)
 	-- use("morhetz/gruvbox")
 	use("tjdevries/colorbuddy.vim")
 	use("tjdevries/gruvbuddy.nvim")
+    -- use("olivercederborg/poimandres.nvim")
 
     -- database use("tpope/vim-dadbod")
     use("kristijanhusak/vim-dadbod-ui")

@@ -34,8 +34,7 @@ end
 
 local capabilities = cmp_nvim_lsp.default_capabilities()
 
-lspconfig["phpactor"].setup({
-	cmd = { "phpactor", "language-server" },
+lspconfig["intelephense"].setup({
 	filetypes = { "php" },
 	capabilities = capabilities,
 	on_attach = on_attach,

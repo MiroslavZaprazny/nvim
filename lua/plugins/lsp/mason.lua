@@ -22,17 +22,18 @@ mason.setup()
 mason_lspconfig.setup({
 	-- list of servers for mason to install
 	ensure_installed = {
-        "phpactor",
+        "intelephense",
 		"gopls",
+		"rust_analyzer",
 	},
 })
 
 mason_null_ls.setup({
 	-- list of formatters & linters for mason to install
 	ensure_installed = {
-		"rust-analyzer",
+        "intelephense",
 		"gopls",
-        "phpactor",
+		"rust_analyzer",
 	},
 	-- auto-install configured formatters & linters (with null-ls)
 	automatic_installation = true,
