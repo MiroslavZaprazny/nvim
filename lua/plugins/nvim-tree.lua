@@ -37,15 +37,16 @@ view = {
       return math.floor(vim.opt.columns:get() * 0.5)
     end,
 },
-filters = {
-    dotfiles = false
-},
+-- filters = {
+   --  git_ignored = false,
+    -- dotfiles = false,
+-- },
 renderer = {
   icons = {
       glyphs = {
         folder = {
-          arrow_closed = "", -- arrow when folder is closed
-          arrow_open = "", -- arrow when folder is open
+          arrow_closed = "", -- arrow when folder is closed
+          arrow_open = "", -- arrow when folder is open
         },
       },
     },
