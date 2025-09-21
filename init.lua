@@ -46,14 +46,7 @@ keymap.set("n", "gd", vim.lsp.buf.definition)
 keymap.set("n", "gi", vim.lsp.buf.implementation)
 keymap.set("n", "K", vim.lsp.buf.hover)
 
-vim.keymap.set('n', '<leader>D', vim.diagnostic.setloclist, { desc = 'Open diagnostic quickfix list' })
-
--- TODO try out blink.cmp
-vim.keymap.set('i', '<C-f>', '<C-x><C-o>', { desc = 'Omni completion' })
-vim.cmd([[
-	inoremap <expr> <C-j> pumvisible() ? "\<C-n>" : "\<C-j>"
-	inoremap <expr> <C-k> pumvisible() ? "\<C-p>" : "\<C-k>"
-]])
+vim.keymap.set('n', '<leader>D', vim.diagnostic.setloclist)
 
 vim.pack.add({
 	{ src = "https://github.com/numToStr/Comment.nvim" },
@@ -66,20 +59,39 @@ vim.pack.add({
 	{ src = "https://github.com/mason-org/mason-lspconfig.nvim" },
 	{ src = "https://github.com/christoomey/vim-tmux-navigator" },
 	{ src = "https://github.com/AlexvZyl/nordic.nvim" },
+	{ src = "https://github.com/saghen/blink.cmp",  version = 'v1.7.0' },
 })
 
+local lsp_servers = {
+	"rust_analyzer",
+	"clangd",
+	"intelephense",
+	"gopls",
+	"pylsp",
+	"elixirls",
+}
+
+require "blink.cmp".setup({
+	completion = {
+		trigger = {
+		  show_on_insert_on_trigger_character = false,
+		  show_on_keyword = false,
+		  show_on_trigger_character = false,
+		},
+	},
+	keymap = {
+		preset = 'default',
+		['<C-f>'] = { 'show' },
+		['<C-j>'] = { 'select_next', 'fallback' },
+		['<C-k>'] = { 'select_prev', 'fallback' },
+		['<C-e>'] = { 'hide' },
+		['<CR>'] = { 'accept', 'fallback' },
+	  },
+})
 require "mason".setup()
 require "mason-lspconfig".setup({
 	automatic_enable = true,
-    ensure_installed = 
-	{
-		"rust_analyzer",
-		"clangd",
-		"intelephense",
-        "gopls",
-        "pylsp",
-		"elixirls",
-	}
+    ensure_installed = lsp_servers
 })
 require "Comment".setup()
 require "mini.pick".setup({
@@ -93,3 +105,9 @@ vim.cmd("colorscheme nordic")
 
 vim.cmd [[set completeopt+=menuone,noselect,popup]]
 
+local blink = require('blink.cmp')
+for k, server in pairs(lsp_servers) do
+	local config = vim.lsp.config[server]
+	config.capabilities = blink.get_lsp_capabilities(config.capabilities)
+	vim.lsp.config[server] = config
+end
