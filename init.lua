@@ -2,6 +2,7 @@ vim.o.relativenumber = true
 vim.o.number = true
 vim.o.tabstop = 4
 vim.o.shiftwidth = 4
+vim.o.expandtab = true
 vim.opt.iskeyword:append("_")
 vim.o.swapfile = false
 vim.o.wrap = false
