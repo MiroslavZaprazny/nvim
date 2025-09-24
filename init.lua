@@ -26,7 +26,7 @@ keymap.set("n", "<leader>tx", ":tabclose<CR>")
 keymap.set("n", "<leader>tn", ":tabn<CR>")
 keymap.set("n", "<leader>tp", ":tabp<CR>")
 
-keymap.set("n", "<C-f>", ":Explore .<CR>")
+keymap.set("n", "<C-f>", ":Oil<CR>")
 
 keymap.set("n", "<leader>ff", "<cmd>Pick files<cr>")
 keymap.set("n", "<leader>fs", "<cmd>Pick grep_live<cr>")
@@ -50,7 +50,7 @@ vim.keymap.set('n', '<leader>D', vim.diagnostic.setloclist)
 
 vim.pack.add({
 	{ src = "https://github.com/numToStr/Comment.nvim" },
-	-- { src = "https://github.com/stevearc/oil.nvim" },
+	{ src = "https://github.com/stevearc/oil.nvim" },
 	{ src = "https://github.com/echasnovski/mini.nvim" },
 	-- { src = "https://github.com/nvim-treesitter/nvim-treesitter", version = "main" },
 	-- { src = "nvim-treesitter/nvim-treesitter-textobjects" },
@@ -88,6 +88,7 @@ require "blink.cmp".setup({
 		['<CR>'] = { 'accept', 'fallback' },
 	  },
 })
+require "oil".setup()
 require "mason".setup()
 require "mason-lspconfig".setup({
 	automatic_enable = true,
