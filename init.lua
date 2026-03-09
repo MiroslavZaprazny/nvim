@@ -45,6 +45,8 @@ keymap.set("n", "gR", vim.lsp.buf.references)
 keymap.set("n", "gd", vim.lsp.buf.definition)
 keymap.set("n", "gi", vim.lsp.buf.implementation)
 keymap.set("n", "K", vim.lsp.buf.hover)
+keymap.set("n", "<leader>h", vim.lsp.buf.code_action)
+keymap.set("n", "<leader>r", vim.lsp.buf.rename)
 
 vim.keymap.set('n', '<leader>D', vim.diagnostic.setloclist)
 
@@ -60,6 +62,8 @@ vim.pack.add({
 	{ src = "https://github.com/christoomey/vim-tmux-navigator" },
 	{ src = "https://github.com/AlexvZyl/nordic.nvim" },
 	{ src = "https://github.com/saghen/blink.cmp",  version = 'v1.7.0' },
+    { src = "https://github.com/tpope/vim-dadbod" },
+    { src = "https://github.com/kristijanhusak/vim-dadbod-ui" }
 })
 
 local lsp_servers = {
