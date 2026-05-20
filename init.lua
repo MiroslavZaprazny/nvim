@@ -57,14 +57,14 @@ vim.pack.add({
 	{ src = "https://github.com/stevearc/oil.nvim" },
 	{ src = "https://github.com/echasnovski/mini.nvim" },
 	{ src = "https://github.com/nvim-treesitter/nvim-treesitter", version = "main" },
-	{ src = "nvim-treesitter/nvim-treesitter-textobjects" },
+	{ src = "https://github.com/nvim-treesitter/nvim-treesitter-textobjects" },
 	{ src = 'https://github.com/neovim/nvim-lspconfig' },
 	{ src = "https://github.com/mason-org/mason.nvim" },
 	{ src = "https://github.com/mason-org/mason-lspconfig.nvim" },
 	{ src = "https://github.com/christoomey/vim-tmux-navigator" },
 	{ src = "https://github.com/saghen/blink.cmp",  version = 'v1.7.0' },
     { src = "https://github.com/akinsho/git-conflict.nvim" },
-    { src = "https://github.com/AlexvZyl/nordic.nvim" }
+    { src = "https://github.com/AlexvZyl/nordic.nvim" },
     { src = "https://github.com/tpope/vim-dadbod" },
     { src = "https://github.com/kristijanhusak/vim-dadbod-ui" }
 })
@@ -75,6 +75,7 @@ local lsp_servers = {
 	"gopls",
 	"pylsp",
 	"elixirls",
+    "ts_ls",
 }
 
 require "blink.cmp".setup({
