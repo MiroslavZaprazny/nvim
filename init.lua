@@ -2,6 +2,7 @@ vim.o.relativenumber = true
 vim.o.number = true
 vim.o.tabstop = 4
 vim.o.shiftwidth = 4
+vim.o.expandtab = true
 vim.opt.iskeyword:append("_")
 vim.o.swapfile = false
 vim.o.wrap = false
@@ -13,6 +14,7 @@ vim.o.smartindent = true
 vim.o.ignorecase = true
 vim.o.smartcase = true
 vim.opt.clipboard:append("unnamedplus")
+vim.opt.colorcolumn = "120"
 
 vim.cmd(":hi statusline guibg=NONE")
 vim.g.mapleader = " "
@@ -20,13 +22,13 @@ vim.g.mapleader = " "
 local keymap = vim.keymap
 
 keymap.set("n", "x", '"_x')
-keymap.set("n", "<leader>cc", ":noh")
+keymap.set("n", "<leader>cc", ":noh<CR>")
 keymap.set("n", "<leader>to", ":tabnew<CR>")
 keymap.set("n", "<leader>tx", ":tabclose<CR>")
 keymap.set("n", "<leader>tn", ":tabn<CR>")
 keymap.set("n", "<leader>tp", ":tabp<CR>")
 
-keymap.set("n", "<C-f>", ":Explore .<CR>")
+keymap.set("n", "<C-f>", ":Oil<CR>")
 
 keymap.set("n", "<leader>ff", "<cmd>Pick files<cr>")
 keymap.set("n", "<leader>fs", "<cmd>Pick grep_live<cr>")
@@ -52,16 +54,17 @@ vim.keymap.set('n', '<leader>D', vim.diagnostic.setloclist)
 
 vim.pack.add({
 	{ src = "https://github.com/numToStr/Comment.nvim" },
-	-- { src = "https://github.com/stevearc/oil.nvim" },
+	{ src = "https://github.com/stevearc/oil.nvim" },
 	{ src = "https://github.com/echasnovski/mini.nvim" },
-	-- { src = "https://github.com/nvim-treesitter/nvim-treesitter", version = "main" },
-	-- { src = "nvim-treesitter/nvim-treesitter-textobjects" },
+	{ src = "https://github.com/nvim-treesitter/nvim-treesitter", version = "main" },
+	{ src = "nvim-treesitter/nvim-treesitter-textobjects" },
 	{ src = 'https://github.com/neovim/nvim-lspconfig' },
 	{ src = "https://github.com/mason-org/mason.nvim" },
 	{ src = "https://github.com/mason-org/mason-lspconfig.nvim" },
 	{ src = "https://github.com/christoomey/vim-tmux-navigator" },
-	{ src = "https://github.com/AlexvZyl/nordic.nvim" },
 	{ src = "https://github.com/saghen/blink.cmp",  version = 'v1.7.0' },
+    { src = "https://github.com/akinsho/git-conflict.nvim" },
+    { src = "https://github.com/AlexvZyl/nordic.nvim" }
     { src = "https://github.com/tpope/vim-dadbod" },
     { src = "https://github.com/kristijanhusak/vim-dadbod-ui" }
 })
@@ -69,7 +72,6 @@ vim.pack.add({
 local lsp_servers = {
 	"rust_analyzer",
 	"clangd",
-	"intelephense",
 	"gopls",
 	"pylsp",
 	"elixirls",
@@ -82,7 +84,12 @@ require "blink.cmp".setup({
 		  show_on_keyword = false,
 		  show_on_trigger_character = false,
 		},
+		menu = {
+			min_width = 60,
+			max_height = 30,
+		},
 	},
+    signature = { enabled = true },
 	keymap = {
 		preset = 'default',
 		['<C-f>'] = { 'show' },
@@ -92,26 +99,41 @@ require "blink.cmp".setup({
 		['<CR>'] = { 'accept', 'fallback' },
 	  },
 })
+require "oil".setup()
 require "mason".setup()
 require "mason-lspconfig".setup({
 	automatic_enable = true,
     ensure_installed = lsp_servers
 })
 require "Comment".setup()
+require('mini.icons').setup()
 require "mini.pick".setup({
     mappings = {
         move_down = '<C-j>',
         move_up = '<C-k>',
   },
+  options = {
+    show_icons = false,
+  },
 })
+
+vim.api.nvim_create_autocmd('ColorScheme', {
+  callback = function()
+    vim.api.nvim_set_hl(0, 'MiniPickMatchCurrent', { bg = '#3c3f5a', fg = '#ffffff', bold = true })
+  end,
+})
+
+require "git-conflict".setup()
 
 vim.cmd("colorscheme nordic")
 
 vim.cmd [[set completeopt+=menuone,noselect,popup]]
 
-local blink = require('blink.cmp')
-for k, server in pairs(lsp_servers) do
-	local config = vim.lsp.config[server]
-	config.capabilities = blink.get_lsp_capabilities(config.capabilities)
-	vim.lsp.config[server] = config
-end
+vim.lsp.config['phpantom'] = {
+  cmd = { 'phpantom_lsp' },
+  filetypes = { 'php' },
+  root_markers = { 'composer.json', '.git' },
+}
+vim.lsp.enable('phpantom')
+
+require'nvim-treesitter'.install { 'rust', 'javascript', 'zig', "typescript", "php", "python", "go" }
